@@ -1,0 +1,199 @@
+.img-account-profile {
+	border: 3px solid #fff;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+	transition: transform 0.3s ease;
+}
+
+.img-account-profile:hover {
+	transform: scale(1.05);
+}
+
+.card-header {
+	font-size: 1.25rem;
+	font-weight: bold;
+}
+
+.form-label {
+	font-weight: bold;
+}
+
+.btn-primary {
+	background-color: #0061f2;
+	border: none;
+}
+
+.btn-primary:hover {
+	background-color: #0051c7;
+}
+
+.shadow-sm {
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+}
+
+#newPasswordFields {
+	transition: all 0.3s ease-in-out;
+}
+
+.animate__animated {
+	animation-duration: 0.5s;
+	animation-fill-mode: both;
+}
+
+.animate__fadeInDown {
+	animation-name: fadeInDown;
+}
+
+.custom-file-label {
+	margin-top: 16px;
+	margin-right: 6px;
+	margin-left: 6px;
+	border: 1px solid #ddd;
+	border-radius: 0.25rem;
+	padding: 0.5rem 1rem;
+	cursor: pointer;
+}
+
+.custom-file-input {
+	display: none;
+}
+
+.custom-file-control {
+	display: inline-block;
+	padding: 0.5rem 1rem;
+	border: 1px solid #ddd;
+	border-radius: 0.25rem;
+	background-color: #f9f9f9;
+	font-size: 0.875rem;
+	font-weight: 400;
+	color: #666;
+}
+
+.close {
+	font-size: 1.5rem;
+	font-weight: bold;
+	color: #aaa;
+	border: none;
+	background: transparent;
+	padding: 0;
+	cursor: pointer;
+}
+
+.close:hover {
+	color: #666;
+}
+
+.close:active {
+	transform: scale(0.9);
+	transition: transform 0.2s ease;
+	border: none;
+}
+
+.close:focus {
+	outline: none;
+	box-shadow: none;
+}
+
+.invalid-feedback {
+    color: #dc3545; /* Warna teks merah */
+    font-size: 0.80rem; /* Ukuran font kecil */
+    margin-left: 15px; /* Margin kiri */
+}
+
+@keyframes fadeInDown {
+	from {
+		opacity: 0;
+		transform: translate3d(0, -100%, 0);
+	}
+
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+.upload-container {
+    position: relative;
+}
+
+.upload-placeholder {
+    border: 2px dashed #007bff;
+    border-radius: 20px;
+    padding: 20px;
+    background: #f0f8ff;
+    color: #007bff;
+    transition: background 0.3s, border-color 0.3s;
+    cursor: pointer;
+}
+
+.upload-placeholder:hover {
+    background: #e0f7ff;
+    border-color: #0056b3;
+}
+
+.file-name-overlay {
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    color: #fff;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.image-preview-container {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.image-preview-container img {
+    border-radius: 20px;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.image-preview-container:hover img {
+    opacity: 0.9;
+    transform: scale(1.05);
+}
+
+.image-preview-container:hover .file-name-overlay {
+    opacity: 1;
+}
+
+.text-primary.clickable {
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.text-primary.clickable:hover {
+    text-decoration: underline;
+}
+
+/* Modal Container */
+.modal-dialog {
+    max-width: 90%; /* Atur lebar maksimal modal */
+}
+
+.modal-dialog.modal-lg {
+    max-width: 500px; /* Atur lebar maksimal modal pada ukuran besar */
+}
+
+.modal-content {
+    border-radius: 20px;
+}
+
+.modal-header {
+    border-bottom: none;
+    padding: 1.25rem 1.5rem;
+}
+
+.modal-body {
+    padding: 2rem;
+}
+
+.modal-footer {
+    border-top: none;
+    padding: 1rem;
+}
