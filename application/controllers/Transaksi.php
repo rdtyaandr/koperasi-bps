@@ -31,16 +31,20 @@ class Transaksi extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
+		$this->load->model('M_account');
 		$this->load->model('M_unit');
 		$this->load->model('M_barang');
 		$this->load->model('M_inventori');
 		$this->load->model('M_transaksi');
-		not_login();
 	}
 
 	public function data()
 	{
+		$user_id = $this->session->userdata('id');
+		$user_data = $this->M_account->getUserDataById($user_id);
+
 		$data['data'] = $this->M_transaksi->dataTransaksi();
+		$data['profile_picture'] = $user_data->profile_picture;
 		$this->template->load('template', 'transaksi/v_datatransaksi', $data);
 	}
 

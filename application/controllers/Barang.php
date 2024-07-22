@@ -5,14 +5,18 @@ class Barang extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
+		$this->load->model('M_account');
 		$this->load->model('m_barang');
 		$this->load->library('form_validation');
-		not_login();
 	}
 
 	public function index()
 	{
+		$user_id = $this->session->userdata('id');
+		$user_data = $this->M_account->getUserDataById($user_id);
+
 		$data['judul'] = 'Tabel Data Barang';
+		$data['profile_picture'] = $user_data->profile_picture;
 		$data['barang'] = $this->m_barang->getAllBarang();
 		$this->template->load('template', 'barang/v_barang', $data);
 	}

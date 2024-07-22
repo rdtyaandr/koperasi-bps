@@ -5,14 +5,18 @@ class Unit extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
+		$this->load->model('M_account');
 		$this->load->model('m_unit');
 		$this->load->library('form_validation');
-		not_login();
 	}
 
 	public function index()
 	{
+		$user_id = $this->session->userdata('id');
+		$user_data = $this->M_account->getUserDataById($user_id);
+
 		$data['judul'] = 'Tabel Data Unit';
+		$data['profile_picture'] = $user_data->profile_picture;
 		$data['unit'] = $this->m_unit->getAllUnit();
 		$this->template->load('template', 'unit/v_unit', $data);
 	}

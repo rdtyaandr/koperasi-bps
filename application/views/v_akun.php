@@ -11,7 +11,7 @@
                 title: '<?= $this->session->flashdata('success'); ?>',
                 text: 'Perubahan telah berhasil disimpan!',
                 showConfirmButton: false,
-                timer: 2000,
+                timer: 3000,
                 timerProgressBar: true, // Menampilkan progress bar
             });
         </script>
@@ -24,24 +24,24 @@
                 title: '<?= $this->session->flashdata('no_change'); ?>',
                 text: 'Mohon lakukan perubahan terlebih dahulu.',
                 showConfirmButton: false,
-                timer: 2000,
+                timer: 3000,
                 timerProgressBar: true, // Menampilkan progress bar
             });
         </script>
     <?php endif; ?>
 
-    <?php if (validation_errors()): ?>
-        <script>
-            Swal.fire({
-                icon: 'error',
-                title: 'Kesalahan',
-                text: '<?= validation_errors(); ?>',
-                showConfirmButton: false,
-                timer: 2000,
-                timerProgressBar: true, // Menampilkan progress bar
-            });
-        </script>
-    <?php endif; ?>
+    <?php if ($this->session->flashdata('error_message')): ?>
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Terjadi Kesalahan',
+            text: '<?= strip_tags($this->session->flashdata('error_message')); ?>',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+        });
+    </script>
+<?php endif; ?>
 
     <div class="row">
         <!-- Profile Card -->
@@ -132,8 +132,7 @@
 </div>
 
 <!-- Modal Edit Foto Profile -->
-<div class="modal fade" id="editProfileModal" tabindex="-1" role="dialog" aria-labelledby="editProfileModalLabel"
-    aria-hidden="true">
+<div class="modal fade" id="editProfileModal" tabindex="-1" role="dialog" aria-labelledby="editProfileModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content rounded-lg border-0 shadow-lg">
             <div class="modal-header border-bottom-0">
@@ -146,24 +145,17 @@
             </div>
             <div class="modal-body p-4">
                 <!-- Form untuk upload foto -->
-                <form action="<?= base_url('dashboard/upload_profile_picture') ?>" method="post"
-                    enctype="multipart/form-data">
+                <form action="<?= base_url('dashboard/upload_profile_picture') ?>" method="post" enctype="multipart/form-data">
                     <div class="upload-container text-center">
-                        <div id="upload-placeholder"
-                            class="upload-placeholder d-flex flex-column align-items-center justify-content-center mt-4">
+                        <div id="upload-placeholder" class="upload-placeholder d-flex flex-column align-items-center justify-content-center mt-4">
                             <i class="fas fa-cloud-upload-alt fa-5x mb-2"></i>
                             <p class="mb-0">Drag & Drop Image</p>
-                            <p class="text-muted">or <label for="file-upload" class="text-primary clickable">Choose
-                                    File</label></p>
+                            <p class="text-muted">or <label for="file-upload" class="text-primary clickable">Choose File</label></p>
                         </div>
-                        <input type="file" id="file-upload" name="file-upload" accept="image/*"
-                            style="display: none;" />
+                        <input type="file" id="file-upload" name="file-upload" accept="image/*" style="display: none;" />
                         <div class="image-preview-container position-relative mt-4">
-                            <img id="preview" src="#" alt="Your Image" class="img-fluid d-none rounded-lg shadow-lg"
-                                style="max-height: 300px;" />
-                            <div id="file-name"
-                                class="file-name-overlay position-absolute w-100 text-center text-white rounded-bottom p-2 d-none">
-                            </div>
+                            <img id="preview" src="#" alt="Your Image" class="img-fluid d-none rounded-lg shadow-lg" style="max-height: 300px;" />
+                            <div id="file-name" class="file-name-overlay position-absolute w-100 text-center text-white rounded-bottom p-2 d-none"></div>
                         </div>
                     </div>
                     <div class="modal-footer border-top-0 d-flex justify-content-end">

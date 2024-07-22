@@ -5,14 +5,18 @@ class Filter extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
+		$this->load->model('M_account');
 		$this->load->model('M_filter');
-		not_login();
 	}
 
 	public function index()
 	{
+		$user_id = $this->session->userdata('id');
+		$user_data = $this->M_account->getUserDataById($user_id);
+
 		$data['unit'] = $this->M_filter->getUnit();
 		$data['data'] = $this->M_filter->getData();
+		$data['profile_picture'] = $user_data->profile_picture;
 		$this->template->load('template', 'v_filter', $data);
 	}
 
