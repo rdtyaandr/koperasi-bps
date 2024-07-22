@@ -8,11 +8,12 @@
     </div>
      <div class="container-fluid" style="margin-top: -175px;">
         <div class="card mb-4 ml-3 mr-3">
-            <div class="card-header"> 
+        <div class="card-header"> 
             	<div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash'); ?>">
             	</div>
             	Tambah Data Barang
             </div>
+         
             <div class="card-body">
                 <div class="container">
                     <div class="row">
@@ -27,6 +28,11 @@
                                     <label>Nama Barang</label>
                                     <input class="form-control" type="text" name="nama_barang" autocomplete="off" value="<?= set_value('nama_barang') ?>"/>
                                     <small class="form-text text-danger"><?= form_error('nama_barang'); ?></small>
+                                </div>
+                                <div class="form-group">
+                                    <label>Stok Barang</label>
+                                    <input class="form-control" type="text" name="stok" autocomplete="off" value="<?= set_value('stok') ?>"/>
+                                    <small class="form-text text-danger"><?= form_error('stok'); ?></small>
                                 </div>
                                 <div class="form-group">
                                     <label>Detail</label>
