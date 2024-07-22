@@ -36,7 +36,7 @@ class Inventori extends CI_Controller
 		$this->load->model('m_inventori');
 		$this->load->library('form_validation');
 		$this->load->model('m_barang');
-		not_login();
+
 	}
 
 	public function index()

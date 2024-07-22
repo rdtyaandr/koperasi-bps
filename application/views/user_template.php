@@ -20,7 +20,6 @@
 <body class="nav-fixed">
     <nav class="topnav navbar navbar-expand shadow navbar-light bg-white" id="sidenavAccordion">
         <a class="navbar-brand d-none d-sm-block" href="<?= base_url('dashboard'); ?>">
-        
             <img src="<?= base_url() ?>material/assets/img/icon-koperasi.png"
                 style="height: 35px; margin-right: 10px;">KOPERASI BPS JATIM
         </a><button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 mr-lg-2" id="sidebarToggle" href="#"><i
@@ -29,16 +28,14 @@
             <li class="nav-item dropdown no-caret mr-3 dropdown-user">
                 <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage"
                     href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false"><img class="img-fluid" src="<?= base_url($profile_picture ? $profile_picture : 'material/image/user.jpg') ?>" /></a>
+                    aria-expanded="false"><img class="img-fluid" src="<?= base_url() ?>material/image/user.png" /></a>
                 <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up"
                     aria-labelledby="navbarDropdownUserImage">
                     <h6 class="dropdown-header d-flex align-items-center">
-                    <img class="dropdown-user-img"  src="<?= base_url($profile_picture ? $profile_picture : 'material/image/user.jpg') ?>" />
+                        <img class="dropdown-user-img" src="<?= base_url() ?>material/image/user.png" />
                         <div class="dropdown-user-details">
-                            <div class="dropdown-user-details-name"><?= $this->session->userdata('nama_lengkap'); ?>
+                            <div class="dropdown-user-details-name"><?= $this->session->userdata('username'); ?>
                             </div>
-                            <div class="dropdown-user-details-email"><?= $this->session->userdata('username'); ?></div>
-                        </div>
                     </h6>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="<?= base_url('dashboard/account_setting') ?>">
@@ -65,21 +62,7 @@
                             Dashboards
                         </a>
 
-                        <div class="sidenav-menu-heading">Master</div>
-                        <a class="nav-link <?php active("barang"); ?>" href="<?= base_url('barang') ?>">
-                            <div class="nav-link-icon"><i data-feather="layout"></i></div>
-                            Data Barang
-                        </a>
-                        <a class="nav-link <?php active("unit"); ?>" href="<?= base_url('unit') ?>">
-                            <div class="nav-link-icon"><i data-feather="home"></i></div>
-                            Data Unit
-                        </a>
 
-                        <div class="sidenav-menu-heading">Transaction</div>
-                        <a class="nav-link <?php active("inventori"); ?>" href="<?= base_url('inventori') ?>">
-                            <div class="nav-link-icon"><i data-feather="package"></i></div>
-                            Data Inventori
-                        </a>
                         <a class="nav-link <?php active("transaksi"); ?>" href="<?= base_url('transaksi/data') ?>">
                             <div class="nav-link-icon"><i data-feather="bar-chart"></i></div>
                             Data Transaksi

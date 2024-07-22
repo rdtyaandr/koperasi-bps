@@ -3,16 +3,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Dashboard extends CI_Controller {
 
-    public function __construct() {
+    public function __construct()
+	 {
         parent::__construct();
         $this->load->model('M_account');
         $this->load->library('form_validation');
-        not_login();
+		
     }
 
-    public function index() {
-        not_login();
-        $this->template->load('template', 'v_dashboard');
+    public function index()
+	 {
+		$user_id = $this->session->userdata('id');
+		$user_data = $this->M_account->getUserDataById($user_id);
+		
+		$this->template->load('template', 'v_dashboard', array(
+			'nama_lengkap' => $this->session->userdata('nama_lengkap'),
+			'username' => $this->session->userdata('username'),
+			'profile_picture' => $user_data->profile_picture
+		));
     }
 
 	public function account_setting() {

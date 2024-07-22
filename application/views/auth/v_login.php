@@ -17,21 +17,28 @@
 
 <body class="text-center">
     <main class="form-signin">
-        <form action="<?= base_url('auth/process') ?>" method="post">
+        <form action="<?= base_url('auth') ?>" method="post">
             <img class="mb-4" src="<?= base_url() ?>material/assets/img/icon.png" alt="" width="72" height="72">
             <h1 class="h3 mb-3 fw-normal">Login Koperasi</h1>
 
-            <div class="form-floating">
-                <label for="username">Username</label>
-                <input type="text" class="form-control" id="username" name="username" placeholder="Username" autocomplete="off" required>
-            </div>
-            <div class="form-floating">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
-            </div>
+            <?= $this->session->flashdata('message'); ?>
+
+            <div class="form-group">
+                <label class="small mb-1">Username</label>
+                                                <input class="form-control py-2" name="username" type="text" placeholder="Username" value="<?= set_value('username')?>" /></div>
+                                                <?= form_error('username','<small class="text-danger pl-3">','</small>'); ?>
+                                            <div class="form-group">
+                                                <label class="small mb-1">Password</label>
+                                                <input class="form-control py-2" name="password" type="password" placeholder="Password" />
+                                                <?= form_error('password','<small class="text-danger pl-3">','</small>'); ?>
+                                            </div>
 
             <button class="w-100 btn btn-lg btn-primary" type="submit" name="login">Login</button>
         </form>
+        <hr>
+        <div class="text-center">
+                                        <a class="small" href="<?= base_url('auth/register')?>">Create an Account!</a>
+                                    </div>
         <footer class="footer mt-auto">
             <div class="container-fluid">
                 <div class="row">

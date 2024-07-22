@@ -7,7 +7,6 @@ class Barang extends CI_Controller {
 		parent::__construct();
 		$this->load->model('m_barang');
 		$this->load->library('form_validation');
-		not_login();
 	}
 
 	public function index()
