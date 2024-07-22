@@ -38,6 +38,11 @@
                                     <input class="form-control" type="number" name="harga_beli" autocomplete="off" value="<?= set_value('harga_beli') ?>" onkeyup="hitung()" id="harga_beli"/>
                                     <small class="form-text text-danger"><?= form_error('harga_beli'); ?></small>
                                 </div>
+                                <div class="form-group">
+                                    <label>Stok</label>
+                                    <input class="form-control" type="number" name="stok" autocomplete="off" value="<?= set_value('stok') ?>" onkeyup="hitung()" id="stok"/>
+                                    <small class="form-text text-danger"><?= form_error('stok'); ?></small>
+                                </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">

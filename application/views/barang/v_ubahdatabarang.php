@@ -32,6 +32,10 @@
                                     <label>Detail</label>
                                     <textarea class="form-control" rows="3" name="detail_barang"><?= $ubah['detail_barang'] ?></textarea>
                                 </div>
+                                <div class="form-group">
+                                    <label>Stok</label>
+                                    <textarea class="form-control" rows="3" name="stok"><?= $ubah['stok'] ?></textarea>
+                                </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
