@@ -7,9 +7,6 @@ class Dashboard extends MY_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		if (!$this->session->userdata('id')) {
-            redirect('auth');
-        }
 		$this->load->model('M_account');
 		$this->load->library('form_validation');
 	}
