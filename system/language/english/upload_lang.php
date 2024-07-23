@@ -37,19 +37,37 @@
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-$lang['upload_userfile_not_set'] = 'Unable to find a post variable called userfile.';
-$lang['upload_file_exceeds_limit'] = 'The uploaded file exceeds the maximum allowed size in your PHP configuration file.';
-$lang['upload_file_exceeds_form_limit'] = 'The uploaded file exceeds the maximum size allowed by the submission form.';
-$lang['upload_file_partial'] = 'The file was only partially uploaded.';
-$lang['upload_no_temp_directory'] = 'The temporary folder is missing.';
-$lang['upload_unable_to_write_file'] = 'The file could not be written to disk.';
-$lang['upload_stopped_by_extension'] = 'The file upload was stopped by extension.';
-$lang['upload_no_file_selected'] = 'You did not select a file to upload.';
-$lang['upload_invalid_filetype'] = 'The filetype you are attempting to upload is not allowed.';
-$lang['upload_invalid_filesize'] = 'The file you are attempting to upload is larger than the permitted size.';
-$lang['upload_invalid_dimensions'] = 'The image you are attempting to upload doesn\'t fit into the allowed dimensions.';
-$lang['upload_destination_error'] = 'A problem was encountered while attempting to move the uploaded file to the final destination.';
-$lang['upload_no_filepath'] = 'The upload path does not appear to be valid.';
-$lang['upload_no_file_types'] = 'You have not specified any allowed file types.';
-$lang['upload_bad_filename'] = 'The file name you submitted already exists on the server.';
-$lang['upload_not_writable'] = 'The upload destination folder does not appear to be writable.';
+// $lang['upload_userfile_not_set'] = 'Unable to find a post variable called userfile.';
+// $lang['upload_file_exceeds_limit'] = 'The uploaded file exceeds the maximum allowed size in your PHP configuration file.';
+// $lang['upload_file_exceeds_form_limit'] = 'The uploaded file exceeds the maximum size allowed by the submission form.';
+// $lang['upload_file_partial'] = 'The file was only partially uploaded.';
+// $lang['upload_no_temp_directory'] = 'The temporary folder is missing.';
+// $lang['upload_unable_to_write_file'] = 'The file could not be written to disk.';
+// $lang['upload_stopped_by_extension'] = 'The file upload was stopped by extension.';
+// $lang['upload_no_file_selected'] = 'You did not select a file to upload.';
+// $lang['upload_invalid_filetype'] = 'The filetype you are attempting to upload is not allowed.';
+// $lang['upload_invalid_filesize'] = 'The file you are attempting to upload is larger than the permitted size.';
+// $lang['upload_invalid_dimensions'] = 'The image you are attempting to upload doesn\'t fit into the allowed dimensions.';
+// $lang['upload_destination_error'] = 'A problem was encountered while attempting to move the uploaded file to the final destination.';
+// $lang['upload_no_filepath'] = 'The upload path does not appear to be valid.';
+// $lang['upload_no_file_types'] = 'You have not specified any allowed file types.';
+// $lang['upload_bad_filename'] = 'The file name you submitted already exists on the server.';
+// $lang['upload_not_writable'] = 'The upload destination folder does not appear to be writable.';
+
+
+$lang['upload_userfile_not_set'] = 'Tidak dapat menemukan variabel post bernama userfile.';
+$lang['upload_file_exceeds_limit'] = 'File yang diunggah melebihi ukuran maksimum yang diizinkan dalam file konfigurasi PHP Anda.';
+$lang['upload_file_exceeds_form_limit'] = 'File yang diunggah melebihi ukuran maksimum yang diizinkan oleh formulir pengiriman.';
+$lang['upload_file_partial'] = 'File hanya diunggah sebagian.';
+$lang['upload_no_temp_directory'] = 'Folder sementara tidak ditemukan.';
+$lang['upload_unable_to_write_file'] = 'File tidak dapat ditulis ke disk.';
+$lang['upload_stopped_by_extension'] = 'Unggahan file dihentikan oleh ekstensi.';
+$lang['upload_no_file_selected'] = 'Anda belum memilih file untuk diunggah.';
+$lang['upload_invalid_filetype'] = 'Tipe file yang Anda coba unggah tidak diizinkan.';
+$lang['upload_invalid_filesize'] = 'File yang Anda coba unggah lebih besar dari ukuran yang diizinkan.';
+$lang['upload_invalid_dimensions'] = 'Gambar yang Anda coba unggah tidak sesuai dengan dimensi yang diizinkan.';
+$lang['upload_destination_error'] = 'Terjadi masalah saat mencoba memindahkan file yang diunggah ke tujuan akhir.';
+$lang['upload_no_filepath'] = 'Jalur unggah tampaknya tidak valid.';
+$lang['upload_no_file_types'] = 'Anda belum menentukan tipe file yang diizinkan.';
+$lang['upload_bad_filename'] = 'Nama file yang Anda kirimkan sudah ada di server.';
+$lang['upload_not_writable'] = 'Folder tujuan unggah tampaknya tidak dapat ditulisi.';

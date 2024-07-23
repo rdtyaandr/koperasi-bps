@@ -8,11 +8,12 @@
     </div>
      <div class="container-fluid" style="margin-top: -175px;">
         <div class="card mb-4 ml-3 mr-3">
-            <div class="card-header"> 
+        <div class="card-header"> 
             	<div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash'); ?>">
             	</div>
             	Tambah Data Barang
             </div>
+         
             <div class="card-body">
                 <div class="container">
                     <div class="row">
@@ -29,6 +30,11 @@
                                     <small class="form-text text-danger"><?= form_error('nama_barang'); ?></small>
                                 </div>
                                 <div class="form-group">
+                                    <label>Stok Barang</label>
+                                    <input class="form-control" type="text" name="stok" autocomplete="off" value="<?= set_value('stok') ?>"/>
+                                    <small class="form-text text-danger"><?= form_error('stok'); ?></small>
+                                </div>
+                                <div class="form-group">
                                     <label>Detail</label>
                                     <Input class="form-control" rows="3" name="detail_barang" autocomplete="off">
                                     <small class="form-text text-danger"><?= form_error('detail_barang'); ?></small>
@@ -37,6 +43,11 @@
                                     <label>Harga Beli</label>
                                     <input class="form-control" type="number" name="harga_beli" autocomplete="off" value="<?= set_value('harga_beli') ?>" onkeyup="hitung()" id="harga_beli"/>
                                     <small class="form-text text-danger"><?= form_error('harga_beli'); ?></small>
+                                </div>
+                                <div class="form-group">
+                                    <label>Stok</label>
+                                    <input class="form-control" type="number" name="stok" autocomplete="off" value="<?= set_value('stok') ?>" onkeyup="hitung()" id="stok"/>
+                                    <small class="form-text text-danger"><?= form_error('stok'); ?></small>
                                 </div>
                         </div>
                         <div class="col-sm-6">

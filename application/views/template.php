@@ -20,7 +20,6 @@
 <body class="nav-fixed">
     <nav class="topnav navbar navbar-expand shadow navbar-light bg-white" id="sidenavAccordion">
         <a class="navbar-brand d-none d-sm-block" href="<?= base_url('dashboard'); ?>">
-        
             <img src="<?= base_url() ?>material/assets/img/icon-koperasi.png"
                 style="height: 35px; margin-right: 10px;">KOPERASI BPS JATIM
         </a><button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 mr-lg-2" id="sidebarToggle" href="#"><i
@@ -29,11 +28,13 @@
             <li class="nav-item dropdown no-caret mr-3 dropdown-user">
                 <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage"
                     href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false"><img class="img-fluid" src="<?= base_url($profile_picture ? $profile_picture : 'material/image/user.jpg') ?>" /></a>
+                    aria-expanded="false"><img class="img-fluid" 
+                    src="<?= base_url($profile_picture ? $profile_picture : 'material/image/user.jpg') ?>" /></a>
                 <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up"
                     aria-labelledby="navbarDropdownUserImage">
                     <h6 class="dropdown-header d-flex align-items-center">
-                    <img class="dropdown-user-img"  src="<?= base_url($profile_picture ? $profile_picture : 'material/image/user.jpg') ?>" />
+                        <img class="dropdown-user-img" 
+                        src="<?= base_url($profile_picture ? $profile_picture : 'material/image/user.jpg') ?>" />
                         <div class="dropdown-user-details">
                             <div class="dropdown-user-details-name"><?= $this->session->userdata('nama_lengkap'); ?>
                             </div>

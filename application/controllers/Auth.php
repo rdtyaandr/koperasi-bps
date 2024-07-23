@@ -6,6 +6,8 @@ Class Auth extends CI_Controller{
 	public function __construct()
 {
 	parent::__construct();
+	$this->load->model('M_account');
+	$this->load->model('m_user');
 	$this->load->library('form_validation');
 
 }
@@ -42,8 +44,8 @@ Class Auth extends CI_Controller{
 						'id' => $user['id'],
 						'nama_lengkap' => $user['nama_lengkap'],
 						'username' => $user['username'],
-						'role_id' => $user['role_id'],
-						'profile_picture' => $user['profile_picture']
+						'profile_picture' => $user['profile_picture'],
+						'role_id' => $user['role_id']
 					];
 					$this->session->set_userdata($data);
 					if ($user['role_id'] == 1) {
@@ -92,7 +94,7 @@ Class Auth extends CI_Controller{
 				'nama_lengkap' => htmlspecialchars($this->input->post('nama_lengkap')),
 				'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
 				'role_id' => 2,
-				'profile_picture' => 'uploads/profile_pictures/user.jpg',
+				'profile_picture' => 'material/image/user.jpg',
 				'is_active' => 1
 			];
 			$this->db->insert('tb_admin',$data);

@@ -2,7 +2,7 @@
     <div class="page-header pb-10 page-header-dark bg-gradient-primary-to-secondary">
         <div class="container-fluid">
             <div class="page-header-content">
-
+                <!-- empty header content -->
             </div>
         </div>
     </div>
@@ -16,7 +16,7 @@
             <div class="card-body">
                 <div class="container">
                     <div class="row">
-                        <div class="col-sm-8">
+                        <div class="col-sm-9">
                             <form method="POST" action="<?= base_url('transaksi/edit') ?>">
                                 <input type="hidden" name="id_transaksi" value="<?= $data['id_transaksi'] ?>">
                                 <div class="form-group">
@@ -56,17 +56,16 @@
                                     Simpan Perubahan
                                 </button>
                                 <a href="<?= base_url() ?>transaksi/data" class="btn btn-warning">Kembali</a>
+                            </form>
                         </div>
-                        </form>
-                    </div>
-                    <div class="col-sm-4">
-                        <img src="<?= base_url() ?>material/assets/img/drawkit/color/drawkit-developer-woman.svg"
-                            style="width: 400px; transform: rotateY(180deg); margin-top: 40px">
+                        <div class="col-sm-3">
+                            <img src="<?= base_url() ?>material/assets/img/drawkit/color/drawkit-developer-woman.svg"
+                                style="width: 200px; transform: rotateY(180deg); margin-top: 40px">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 </main>
 <script>

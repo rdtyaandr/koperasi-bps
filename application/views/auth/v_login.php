@@ -11,8 +11,10 @@
     <link href="<?= base_url() ?>material/css/styles.css" rel="stylesheet" />
     <link href="<?= base_url() ?>material/css/form.css" rel="stylesheet" />
     <link rel="icon" type="image/x-icon" href="<?= base_url() ?>material/assets/img/icon.png" />
-    <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.24.1/feather.min.js" crossorigin="anonymous"></script>
+    <script data-search-pseudo-elements defer
+        src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.24.1/feather.min.js"
+        crossorigin="anonymous"></script>
 </head>
 
 <body class="text-center">
@@ -25,20 +27,22 @@
 
             <div class="form-group">
                 <label class="small mb-1">Username</label>
-                                                <input class="form-control py-2" name="username" type="text" placeholder="Username" value="<?= set_value('username')?>" /></div>
-                                                <?= form_error('username','<small class="text-danger pl-3">','</small>'); ?>
-                                            <div class="form-group">
-                                                <label class="small mb-1">Password</label>
-                                                <input class="form-control py-2" name="password" type="password" placeholder="Password" />
-                                                <?= form_error('password','<small class="text-danger pl-3">','</small>'); ?>
-                                            </div>
+                <input class="form-control py-2" name="username" type="text" placeholder="Username"
+                    value="<?= set_value('username') ?>" />
+            </div>
+            <?= form_error('username', '<small class="text-danger pl-3">', '</small>'); ?>
+            <div class="form-group">
+                <label class="small mb-1">Password</label>
+                <input class="form-control py-2" name="password" type="password" placeholder="Password" />
+                <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
+            </div>
 
             <button class="w-100 btn btn-lg btn-primary" type="submit" name="login">Login</button>
         </form>
         <hr>
         <div class="text-center">
-                                        <a class="small" href="<?= base_url('auth/register')?>">Create an Account!</a>
-                                    </div>
+            <a class="small" href="<?= base_url('auth/register') ?>">Create an Account!</a>
+        </div>
         <footer class="footer mt-auto">
             <div class="container-fluid">
                 <div class="row">

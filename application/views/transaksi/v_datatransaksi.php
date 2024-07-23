@@ -19,7 +19,6 @@
                     <a href="<?= base_url('transaksi'); ?>" class="btn btn-info">
                         <i data-feather="plus" style="font-size: 18px;"></i>
                     </a>
-
                     <div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash'); ?>">
                     </div>
                 </div>
@@ -67,28 +66,39 @@
                                             echo "<h6><span class='badge badge-danger' style='border-radius: 20px; padding: 6px;'>&nbsp;&nbsp;&nbsp;Belum Diambil&nbsp;&nbsp;&nbsp;</span><h6>";
                                         } ?>
                                     </td>
-                                    <td><?php
+                                    <td>
+                                        <?php
 
-                                    $create = explode(' ', $d['created_at']);
-                                    $create2 = explode('-', $create[0]);
-                                    $tanggal = $create2[2];
-                                    $bulan = $create2[1];
-                                    $tahun = $create2[0];
+                                        $create = explode(' ', $d['created_at']);
+                                        $create2 = explode('-', $create[0]);
+                                        $tanggal = $create2[2];
+                                        $bulan = $create2[1];
+                                        $tahun = $create2[0];
 
-                                    $tampil_tanggal = $tanggal . "-" . $bulan . "-" . $tahun;
-                                    $param = $d['id_transaksi'];
-                                    echo $tampil_tanggal;
-                                    ?></td>
+                                        $tampil_tanggal = $tanggal . "-" . $bulan . "-" . $tahun;
+                                        $param = $d['id_transaksi'];
+                                        echo $tampil_tanggal;
+                                        ?>
+                                    </td>
                                     <td>
                                         <center>
-                                           <!-- <a href="#" class="badge badge-primary detail" data-toggle="modal"
-                                                data-target="#exampleModalLg" data-parameter="<?= $d['id_transaksi']; ?>">
-                                                <i data-feather="eye"></i>
-                                            </a> -->
+                                            <a href="#" class="btn btn-default btn-xs detail" data-toggle="exampleModalLg"
+                                                data-target="modal-detail" data-unit="<?= $d['nama_unit'] ?>"
+                                                data-carabayar="<?= ($d['cara_bayar'] == 1) ? 'Dibayar Cash' : 'Dibayar Kredit' ?>"
+                                                data-statusbayar="<?= ($d['status_bayar'] == 1) ? 'Sudah Lunas' : 'Belum Lunas' ?>"
+                                                data-pengambilan="<?= ($d['status_pengambilan'] == 1) ? 'Sudah Diambil' : 'Belum Diambil' ?>"
+                                                data-tanggal="<?= $tampil_tanggal ?>"
+                                                data-parameter="<?= $d['id_transaksi'] ?>">
+                                                <i class="fas fa-eye" style="font-size: 16px;"></i>
+                                            </a>
                                             <a href="<?= base_url('transaksi/ubahtransaksi') ?>/<?= $d['id_transaksi']; ?>"
-                                                class="badge badge-info"><i data-feather="edit"></i></a>
+                                                class="badge badge-info">
+                                                <i class="fas fa-edit" style="font-size: 14px;"></i>
+                                            </a>
                                             <a href="<?= base_url('transaksi/hapus') ?>/<?= $d['id_transaksi']; ?>"
-                                                class="badge badge-danger tombol-hapus"><i data-feather="trash-2"></i></a>
+                                                class="badge badge-danger tombol-hapus">
+                                                <i class="fas fa-trash-alt" style="font-size: 14px;"></i>
+                                            </a>
                                         </center>
                                     </td>
 
@@ -102,10 +112,10 @@
         </div>
     </div>
 
-    <!-- Large modal 
+
+    <!-- Large modal -->
     <div class="modal fade" id="exampleModalLg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
         aria-hidden="true">
-
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -114,34 +124,58 @@
                             aria-hidden="true">×</span></button>
                 </div>
                 <div class="modal-body">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">No</th>
-                                <th scope="col">Nama Barang</th>
-                                <th scope="col">
-                                    <center>Kategori</center>
-                                </th>
-                                <th scope="col">Harga</th>
-                                <th scope="col">
-                                    <center>Jumlah</center>
-                                </th>
-                                <th scope="col">Total</th>
-                            </tr>
-                        </thead>
-                        <tbody id="detail_transaksi">
-                            
-                        </tbody>
-                    </table>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Unit:</h6>
+                            <p id="unit" style="font-size: 18px; font-weight: bold; color: #000;"></p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Tanggal:</h6>
+                            <p id="tanggal" style="font-size: 18px; font-weight: bold; color: #000;"></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Cara Bayar:</h6>
+                            <p id="carabayar" style="font-size: 18px; font-weight: bold; color: #000;"></p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Status Bayar:</h6>
+                            <p id="statusbayar" style="font-size: 18px; font-weight: bold; color: #000;"></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Pengambilan:</h6>
+                            <p id="pengambilan" style="font-size: 18px; font-weight: bold; color: #000;"></p>
+                        </div>
+                    </div>
+                    <hr>
+                    <h5>Detail Barang</h5>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">No</th>
+                                    <th scope="col">Nama Barang</th>
+                                    <th scope="col">Kategori</th>
+                                    <th scope="col">Harga</th>
+                                    <th scope="col">Jumlah</th>
+                                    <th scope="col">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody id="detail_transaksi">
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 <div class="modal-footer" id="footer-modal">
-                    
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
-                              <!-- ? -->      
-
+    <!-- ? -->
 </main>
 
 
@@ -150,42 +184,47 @@
 
 <script>
     $(document).ready(function () {
-        // Event handler untuk tombol detail
+        // Event handler for detail button
         $('.detail').on('click', function () {
-            var id_transaksi = $(this).data('parameter'); // Ambil ID transaksi dari atribut data-parameter
+            var unit = $(this).data('unit');
+            var caraBayar = $(this).data('carabayar');
+            var statusBayar = $(this).data('statusbayar');
+            var pengambilan = $(this).data('pengambilan');
+            var tanggal = $(this).data('tanggal');
 
-            // Lakukan AJAX request untuk mendapatkan detail transaksi
-            $.ajax({
-                type: "GET",
-                url: "<?= base_url() ?>transaksi/get_detail_transaksi/" + id_transaksi, // URL ke method baru di controller
-                dataType: "json",
-                success: function (data) {
-                    // Kosongkan isi tbody terlebih dahulu
-                    $('#detail_transaksi').html('');
-
-                    // Iterasi melalui data dan tambahkan baris baru ke tbody
-                    $.each(data, function (index, item) {
-                        var row = `
-                            <tr>
-                                <td>${index + 1}</td>
-                                <td>${item.nama_barang}</td>
-                                <td><center>${item.kategori}</center></td>
-                                <td>${item.harga}</td>
-                                <td><center>${item.jumlah}</center></td>
-                                <td>${item.total}</td>
-                            </tr>
-                        `;
-                        $('#detail_transaksi').append(row);
-                    });
-                },
-                error: function () {
-                    // Handle error jika ada
-                    alert('Gagal memuat detail transaksi!');
-                }
-            });
+            // Update modal content with data
+            $('#exampleModalLg').modal('show');
+            $('.modal-title').text('Detail Transaksi');
+            var modalBody = `
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td>Unit</td>
+                        <td>${unit}</td>
+                    </tr>
+                    <tr>
+                        <td>Cara Bayar</td>
+                        <td>${caraBayar}</td>
+                    </tr>
+                    <tr>
+                        <td>Status Bayar</td>
+                        <td>${statusBayar}</td>
+                    </tr>
+                    <tr>
+                        <td>Pengambilan</td>
+                        <td>${pengambilan}</td>
+                    </tr>
+                    <tr>
+                        <td>Tanggal</td>
+                        <td>${tanggal}</td>
+                    </tr>
+                </tbody>
+            </table>
+        `;
+            $('.modal-body').html(modalBody);
         });
 
-        // Event handler untuk tombol hapus (contoh, jika dibutuhkan)
+        // Event handler for delete button
         $('.tombol-hapus').on('click', function (e) {
             e.preventDefault();
             const href = $(this).attr('href');
@@ -206,4 +245,5 @@
             });
         });
     });
+
 </script>
