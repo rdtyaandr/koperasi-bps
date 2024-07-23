@@ -1,13 +1,36 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-Class Auth extends CI_Controller{
+Class Auth extends MY_Controller{
 
 	public function __construct()
 {
 	parent::__construct();
 	$this->load->model('m_user');
 	$this->load->library('form_validation');
+	$this->load->model('M_account');
+    
+    $user_id = $this->session->userdata('id');
+
+    // Pastikan ada user_id sebelum melanjutkan
+    if ($user_id) {
+        $user_data = $this->M_account->getUserDataById($user_id);
+        if ($user_data) {
+            $this->data['profile_picture'] = $user_data->profile_picture;
+            $this->data['nama_lengkap'] = $this->session->userdata('nama_lengkap');
+            $this->data['username'] = $this->session->userdata('username');
+        } else {
+            // Tangani kasus ketika data pengguna tidak ditemukan
+            $this->data['profile_picture'] = 'default_profile_picture.jpg'; // Atau nilai default lain
+            $this->data['nama_lengkap'] = '';
+            $this->data['username'] = '';
+        }
+    } else {
+        // Jika tidak ada user_id, Anda bisa men-set data default atau menangani kasus ini sesuai kebutuhan
+        $this->data['profile_picture'] = 'default_profile_picture.jpg';
+        $this->data['nama_lengkap'] = '';
+        $this->data['username'] = '';
+    }
 }
 
 	public function index(){
@@ -107,6 +130,7 @@ Class Auth extends CI_Controller{
 		public function logout()
 	{
 		$params = ['id','username','role_id'];
+		$this->session->sess_destroy();
 		$this->session->unset_userdata($params);
 		$this->session->set_flashdata('message','<div class="alert alert-primary" role="alert">
 		You has been Logout!

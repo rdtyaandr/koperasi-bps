@@ -7,7 +7,7 @@ use PhpOffice\PhpSpreadsheet\Helper\Sample;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
-class Laporan extends CI_Controller {
+class Laporan extends MY_Controller {
 
 	public function __construct(){
 		parent::__construct();

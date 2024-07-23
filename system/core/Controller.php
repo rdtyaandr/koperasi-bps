@@ -79,20 +79,6 @@ class CI_Controller
 		$this->load =& load_class('Loader', 'core');
 		$this->load->initialize();
 		log_message('info', 'Controller Class Initialized');
-
-		// Tambahkan kode Anda di sini
-		$this->load->model('M_account');
-
-		if (!$this->session->userdata('id')) {
-			redirect('Auth');
-		}
-
-		$user_id = $this->session->userdata('id');
-		$this->user_data = $this->M_account->getUserDataById($user_id);
-
-		$this->data['profile_picture'] = $this->user_data->profile_picture;
-		$this->data['nama_lengkap'] = $this->session->userdata('nama_lengkap');
-		$this->data['username'] = $this->session->userdata('username');
 	}
 
 	// --------------------------------------------------------------------
