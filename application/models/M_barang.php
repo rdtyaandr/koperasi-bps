@@ -17,7 +17,7 @@ Class M_barang extends CI_Model{
 			'kategori'=> $this->input->post('kategori', TRUE),
 			'harga_beli'=> $this->input->post('harga_beli', TRUE),
 			'harga_jual'=> $this->input->post('harga_jual', TRUE),
-			'stok' => 0,
+			'stok' => $this->input->post('stok', TRUE),
 			'updated_at' => 0,
 		];
 
@@ -47,6 +47,7 @@ Class M_barang extends CI_Model{
 			'detail_barang' => $this->input->post('detail_barang', TRUE),
 			'satuan'=> $this->input->post('satuan', TRUE),
 			'kategori'=> $this->input->post('kategori', TRUE),
+			'stok' => $this->input->post('stok', TRUE),
 			'updated_at' => date("Y-m-d h:i:s"),
 		];
 

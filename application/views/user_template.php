@@ -56,16 +56,20 @@
                 <div class="sidenav-menu">
 
                     <div class="nav accordion" id="accordionSidenav">
-                        <div class="sidenav-menu-heading">Landing</div>
-                        <a class="nav-link collapsed" href="<?= base_url('dashboard') ?>">
-                            <div class="nav-link-icon text bold"><i data-feather="activity"></i></div>
-                            Dashboards
+                        <div class="sidenav-menu-heading">User Menu</div>
+                        <a class="nav-link collapsed" href="<?= base_url('user/user') ?>">
+                        <div class="nav-link-icon"><i data-feather="home"></i></div>
+                            Home
                         </a>
 
 
                         <a class="nav-link <?php active("transaksi"); ?>" href="<?= base_url('transaksi/data') ?>">
                             <div class="nav-link-icon"><i data-feather="bar-chart"></i></div>
                             Data Transaksi
+                        </a>
+
+                        <a href="">
+
                         </a>
 
                         <div class="sidenav-menu-heading">Report</div>

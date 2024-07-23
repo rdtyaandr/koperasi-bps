@@ -66,6 +66,11 @@
                                 </select>
                             </div>
                             <div class="form-group">
+                                    <label>Stok</label>
+                                    <textarea class="form-control" type="text" name="stok"
+                                        name="stok"><?= $ubah['stok'] ?></textarea>
+                                </div>  
+                            <div class="form-group">
                                 <button class="btn btn-success" type="submit">
                                     Tambah
                                 </button>

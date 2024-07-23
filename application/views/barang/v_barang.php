@@ -6,17 +6,27 @@
                     <div class="page-header-icon">
                         <i data-feather="layout"></i>
                     </div>
-                     <span>Data Barang</span>
+                    <span>Data Barang</span>
                 </h4>
                 <div class="page-header-subtitle"></div>
             </div>
         </div>
     </div>
     <div class="container-fluid" style="margin-top: -130px;">
-        <div class="card mb-4 ">
+
+        <div class="card mb-4">
             <div class="card-header">
                 <div>
                     <a href="<?= base_url('barang/tambah'); ?>" class="btn btn-info">Tambah Data</a>
+                    <?php $kode_barang = '';
+                    foreach ($barang as $brg):
+                        $kode_barang = $brg['kode_barang'];
+                    endforeach; ?>
+                    <!-- Tombol Cetak Gambar Barcode -->
+                  <!  <a href="<?= base_url('barang/cetak_barcode') ?>?kode_barang=<?= $kode_barang ?>"
+                        class="btn btn-success ml-2" target="_blank"></a>
+                    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+                    <!-- Akhir Tombol Cetak Gambar Barcode -->
                     <div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash'); ?>">
                     </div>
                 </div>
@@ -39,28 +49,53 @@
                             </tr>
                         </thead>
                         <tbody>
-                        <?php $no = 1; foreach ($barang as $brg) : ?>
-                            <tr>
-                                <td><center><?= $no++ ?></center></td>
-                                <td><?= $brg['kode_barang'] ?></td>
-                                <td><?= $brg['nama_barang'] ?></td>
-                                <td><?= $brg['detail_barang'] ?></td>
-                                <td><?= $brg['satuan'] ?></td>
-                                <td><?= $brg['kategori'] ?></td>
-                                <td>
-                                    <?= $brg['stok'] ?>     
-                                </td>
-                                <td><?= $rp = 'Rp '. number_format($brg['harga_beli'],0,',','.'); ?></td>
-                                <td><?= $rp = 'Rp '. number_format($brg['harga_jual'],0,',','.'); ?></td>
-                                <td>
-                                    <center>
-                                    <a href="<?= base_url(); ?>barang/ubah/<?= $brg['id_barang'] ?>" class="badge badge-info"><i data-feather="edit"></i>
-                                    </a>
-                                    <a href="<?= base_url(); ?>barang/hapus/<?= $brg['id_barang'] ?>" class="badge badge-danger tombol-hapus"><i data-feather="trash-2"></i></a>
-                                    </center>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
+                            <?php $no = 1;
+                            foreach ($barang as $brg): ?>
+                                <tr>
+                                    <td>
+                                        <center><?= $no++ ?></center>
+                                    </td>
+                                    <td><?= $brg['kode_barang'] ?></td>
+                                    <td><?= $brg['nama_barang'] ?></td>
+                                    <td><?= $brg['detail_barang'] ?></td>
+                                    <td><?= $brg['satuan'] ?></td>
+                                    <td><?= $brg['kategori'] ?></td>
+                                    <td><?= $brg['stok'] ?></td>
+                                    <td><?= $rp = 'Rp ' . number_format($brg['harga_beli'], 0, ',', '.'); ?></td>
+                                    <td><?= $rp = 'Rp ' . number_format($brg['harga_jual'], 0, ',', '.'); ?></td>
+                                    <td>
+                                        <center>
+                                            <div class="btn-group" role="group" aria-label="Basic example">
+                                                <button type="button" class="btn btn-sm btn-secondary">
+                                                    <svg id="barcode-<?= $brg['kode_barang'] ?>"
+                                                        style="width: 100px; height: 30px;"></svg>
+                                                    <script>
+                                                        JsBarcode("#barcode-<?= $brg['kode_barang'] ?>", "<?= $brg['kode_barang'] ?>", {
+                                                            format: "CODE128",
+                                                            displayValue: true,
+                                                            fontSize: 18,
+                                                            height: 30,
+                                                            width: 2
+                                                        });
+                                                    </script>
+                                                </button>
+                                                <button type="button" class="btn btn-sm btn-info">
+                                                    <a href="<?= base_url(); ?>barang/ubah/<?= $brg['id_barang'] ?>"
+                                                        style="color: #fff;">
+                                                        <i data-feather="edit"></i>
+                                                    </a>
+                                                </button>
+                                                <button type="button" class="btn btn-sm btn-danger">
+                                                    <a href="<?= base_url(); ?>barang/hapus/<?= $brg['id_barang'] ?>"
+                                                        class="tombol-hapus" style="color: #fff;">
+                                                        <i data-feather="trash-2"></i>
+                                                    </a>
+                                                </button>
+                                            </div>
+                                        </center>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>
@@ -68,28 +103,25 @@
         </div>
     </div>
 </main>
-<script src="<?= base_url();?>material/js/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+<script src="<?= base_url(); ?>material/js/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
 <script type="text/javascript">
-    $('.tombol-hapus').on('click', function(e){
+    $('.tombol-hapus').on('click', function (e) {
+        e.preventDefault();
+        const href = $(this).attr('href');
 
-    e.preventDefault();
-
-    const href = $(this).attr('href');
-    
-    Swal.fire({
-      title: 'Apakah anda yakin?',
-      text: "Data akan dihapus!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Ya, hapus!',
-      cancelButtonText: 'Batal',
-    }).then((result) => {
-        if(result.value){
-           document.location.href = href; 
-        }
-    })
-
-});
+        Swal.fire({
+            title: 'Yakin mau menghapus?',
+            text: "Data akan dihapus!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Hapus',
+            cancelButtonText: 'Tidak, Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.location.href = href;
+            }
+        });
+    });
 </script>

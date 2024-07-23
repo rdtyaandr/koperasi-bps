@@ -59,7 +59,7 @@
                 <div class="sidenav-menu">
 
                     <div class="nav accordion" id="accordionSidenav">
-                        <div class="sidenav-menu-heading">Landing</div>
+                        <div class="sidenav-menu-heading">Admin Menu</div>
                         <a class="nav-link collapsed" href="<?= base_url('dashboard') ?>">
                             <div class="nav-link-icon text bold"><i data-feather="activity"></i></div>
                             Dashboards
@@ -74,6 +74,8 @@
                             <div class="nav-link-icon"><i data-feather="home"></i></div>
                             Data Unit
                         </a>
+
+                       
 
                         <div class="sidenav-menu-heading">Transaction</div>
                         <a class="nav-link <?php active("inventori"); ?>" href="<?= base_url('inventori') ?>">
@@ -94,6 +96,20 @@
                             <div class="nav-link-icon"><i data-feather="file"></i></div>
                             Laporan
                         </a>
+                        <div class="sidenav-menu-heading">Pinjaman</div>
+                        <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#collapseMaster" aria-expanded="false" aria-controls="collapseMaster">
+                            <div class="nav-link-icon"><i data-feather="layers"></i></div>
+                            Master Data
+                            <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseMaster" data-parent="#accordionSidenav">
+                            <nav class="sidenav-menu-nested nav">
+                                <a class="nav-link <?php active("barang"); ?>" href="<?= base_url('barang') ?>">Data Barang</a>
+                                <a class="nav-link <?php active("unit"); ?>" href="<?= base_url('unit') ?>">Data Unit</a>
+                            </nav>
+                        </div>
+
+                        
 
                     </div>
                 </div>

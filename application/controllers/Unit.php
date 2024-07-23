@@ -7,6 +7,9 @@ class Unit extends CI_Controller {
 		parent::__construct();
 		$this->load->model('m_unit');
 		$this->load->library('form_validation');
+		if(!$this->session->userdata('username')) {
+			redirect('auth');
+		}
 	}
 
 	public function index()

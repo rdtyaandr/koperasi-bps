@@ -4,6 +4,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Transaksi extends CI_Controller
 {
 
+
+
 	public function detail_transaksi($id_transaksi)
 	{
 		$this->load->model('M_transaksi');
@@ -35,6 +37,9 @@ class Transaksi extends CI_Controller
 		$this->load->model('M_barang');
 		$this->load->model('M_inventori');
 		$this->load->model('M_transaksi');
+		if(!$this->session->userdata('username')) {
+			redirect('auth');
+		}
 	}
 
 	public function data()
