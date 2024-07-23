@@ -6,7 +6,6 @@ Class Auth extends CI_Controller{
 	public function __construct()
 {
 	parent::__construct();
-	$this->load->model('M_account');
 	$this->load->model('m_user');
 	$this->load->library('form_validation');
 }
@@ -95,7 +94,7 @@ Class Auth extends CI_Controller{
 				'profile_picture' => 'material/image/user.jpg',
 				'is_active' => 1
 			];
-			$this->db->insert('tb_admin',$data);
+			$this->db->insert('tb_admin',$data);	
 			$this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
 			Congratulation! your account is been created. please login!
 		  </div>');
