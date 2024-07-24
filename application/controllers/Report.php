@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Report extends CI_Controller{
+class Report extends MY_Controller{
     public function __construct(){
         parent::__construct();
         $this->load->library('pdfgenerator');

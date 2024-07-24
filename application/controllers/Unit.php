@@ -1,11 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Unit extends CI_Controller {
+class Unit extends MY_Controller {
 
 	public function __construct(){
 		parent::__construct();
-		$this->load->model('M_account');
 		$this->load->model('m_unit');
 		$this->load->library('form_validation');
 		if(!$this->session->userdata('username')) {
@@ -15,17 +14,14 @@ class Unit extends CI_Controller {
 
 	public function index()
 	{
-		$user_id = $this->session->userdata('id');
-		$user_data = $this->M_account->getUserDataById($user_id);
-
+		$data = $this->data;
 		$data['judul'] = 'Tabel Data Unit';
-		$data['profile_picture'] = $user_data->profile_picture;
 		$data['unit'] = $this->m_unit->getAllUnit();
 		$this->template->load('template', 'unit/v_unit', $data);
 	}
 
 	public function tambah(){
-		
+		$data = $this->data;
 		$this->form_validation->set_rules('nama_unit', 'Nama Unit', 'required');
 		$this->form_validation->set_rules('no_telp', 'No Telp', 'required');
 		$this->form_validation->set_rules('nama_pic', 'Nama PIC', 'required');
@@ -44,6 +40,7 @@ class Unit extends CI_Controller {
 	}
 
 	public function ubah($id){
+		$data = $this->data;
 		$this->form_validation->set_rules('nama_unit', 'Nama Unit', 'required');
 		$this->form_validation->set_rules('no_telp', 'No Telp', 'required');
 		$this->form_validation->set_rules('nama_pic', 'Nama PIC', 'required');

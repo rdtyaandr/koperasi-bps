@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Inventori extends CI_Controller
+class Inventori extends MY_Controller
 {
 
 	public function edit()
@@ -33,7 +33,6 @@ class Inventori extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('M_account');
 		$this->load->model('m_inventori');
 		$this->load->library('form_validation');
 		$this->load->model('m_barang');
@@ -45,18 +44,15 @@ class Inventori extends CI_Controller
 
 	public function index()
 	{
-		$user_id = $this->session->userdata('id');
-		$user_data = $this->M_account->getUserDataById($user_id);
-
+		$data = $this->data;
 		$data['judul'] = 'Tabel Data Inventori';
-		$data['profile_picture'] = $user_data->profile_picture;
 		$data['inventori'] = $this->m_inventori->getAllInventori();
 		$this->template->load('template', 'inventori/v_inventori', $data);
 	}
 
 	public function tambah()
 	{
-
+		$data = $this->data;
 		$this->form_validation->set_rules('kode_barang', 'Kode Barang', 'required');
 		$this->form_validation->set_rules('nama_barang', 'Nama Barang', 'required');
 		$this->form_validation->set_rules('detail_barang', 'Detail Barang', 'required');
@@ -91,6 +87,7 @@ class Inventori extends CI_Controller
 
 	public function ubah($id)
 	{
+		$data = $this->data;
 		$this->form_validation->set_rules('kode_barang', 'Kode Barang', 'required');
 		$this->form_validation->set_rules('nama_barang', 'Nama Barang', 'required');
 		$this->form_validation->set_rules('detail_barang', 'Detail Barang', 'required');

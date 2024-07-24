@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Transaksi extends CI_Controller
+class Transaksi extends MY_Controller
 {
 
 
@@ -33,7 +33,6 @@ class Transaksi extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('M_account');
 		$this->load->model('M_unit');
 		$this->load->model('M_barang');
 		$this->load->model('M_inventori');
@@ -45,11 +44,8 @@ class Transaksi extends CI_Controller
 
 	public function data()
 	{
-		$user_id = $this->session->userdata('id');
-		$user_data = $this->M_account->getUserDataById($user_id);
-
+		$data = $this->data;
 		$data['data'] = $this->M_transaksi->dataTransaksi();
-		$data['profile_picture'] = $user_data->profile_picture;
 		$this->template->load('template', 'transaksi/v_datatransaksi', $data);
 	}
 
@@ -81,6 +77,7 @@ class Transaksi extends CI_Controller
 
 	public function index()
 	{
+		$data = $this->data;
 		$data['option'] = $this->M_unit->getAllUnit();
 		$data['barang'] = $this->M_barang->getBarangStok();
 		$this->template->load('template', 'transaksi/v_transaksi', $data);
@@ -219,6 +216,7 @@ class Transaksi extends CI_Controller
 
 	public function ubahtransaksi($id)
 	{
+		$data = $this->data;
 		$data['judul'] = "Edit Data Transaksi";
 		$data['data'] = $this->M_transaksi->getTransaksiById($id);
 		$this->template->load('template', 'transaksi/v_edittransaksi', $data);

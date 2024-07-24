@@ -1,8 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Barang extends CI_Controller {
-
+class Barang extends MY_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->model('M_account');
@@ -15,16 +14,14 @@ class Barang extends CI_Controller {
 
 	public function index()
 	{
-		$user_id = $this->session->userdata('id');
-		$user_data = $this->M_account->getUserDataById($user_id);
-
+		$data = $this->data;
 		$data['judul'] = 'Tabel Data Barang';
-		$data['profile_picture'] = $user_data->profile_picture;
 		$data['barang'] = $this->m_barang->getAllBarang();
 		$this->template->load('template', 'barang/v_barang', $data);
 	}
 
 	public function tambah(){
+		$data = $this->data;
 		$this->form_validation->set_rules('kode_barang', 'Kode Barang', 'required|is_unique[tb_barang.kode_barang]');
 		$this->form_validation->set_rules('nama_barang', 'Nama Barang', 'required');
 		$this->form_validation->set_rules('detail_barang', 'Detail Barang', 'required');
@@ -42,6 +39,7 @@ class Barang extends CI_Controller {
 	}
 
 	public function ubah($id){
+		$data = $this->data;
 		$this->form_validation->set_rules('kode_barang', 'Kode Barang', 'required');
 		if($this->form_validation->run() == false){
 			$data['satuan'] = ['PCS', 'RIM', 'DUS'];

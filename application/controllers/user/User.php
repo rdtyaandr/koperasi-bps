@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-Class User extends CI_Controller{
+Class User extends MY_Controller{
 
     public function __construct()
     {

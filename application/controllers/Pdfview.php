@@ -1,7 +1,7 @@
 <?php
 // defined('BASEPATH') OR exit('No direct script access allowed');
 
-// class Pdfview extends CI_Controller{
+// class Pdfview extends MY_Controller{
 
 //     public function index(){
 
@@ -22,7 +22,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Pdfview extends CI_Controller {
+class Pdfview extends MY_Controller {
     public function index()
     {
         // panggil library yang kita buat sebelumnya yang bernama pdfgenerator

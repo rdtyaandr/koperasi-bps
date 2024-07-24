@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Dashboard extends CI_Controller
+class Dashboard extends MY_Controller
 {
 
     public function __construct()
@@ -20,28 +20,14 @@ class Dashboard extends CI_Controller
 
 	public function index()
 	{
-		$user_id = $this->session->userdata('id');
-		$user_data = $this->M_account->getUserDataById($user_id);
-
-		$this->template->load('template', 'v_dashboard', array(
-			'nama_lengkap' => $this->session->userdata('nama_lengkap'),
-			'username' => $this->session->userdata('username'),
-			'profile_picture' => $user_data->profile_picture
-		)
-		);
+		$data = $this->data;
+		$this->template->load('template', 'v_dashboard', $data);
 	}
 
 	public function account_setting()
 	{
-		$user_id = $this->session->userdata('id');
-		$user_data = $this->M_account->getUserDataById($user_id);
-
-		$this->template->load('template', 'v_akun', array(
-			'nama_lengkap' => $this->session->userdata('nama_lengkap'),
-			'username' => $this->session->userdata('username'),
-			'profile_picture' => $user_data->profile_picture
-		)
-		);
+		$data = $this->data;
+		$this->template->load('template', 'v_akun', $data);
 	}
 
 	public function update_account() {

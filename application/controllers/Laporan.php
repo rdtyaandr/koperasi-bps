@@ -7,11 +7,10 @@ use PhpOffice\PhpSpreadsheet\Helper\Sample;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
-class Laporan extends CI_Controller {
+class Laporan extends MY_Controller {
 
 	public function __construct(){
 		parent::__construct();
-		$this->load->model('M_account');
 		$this->load->model('m_unit');
 		$this->load->model('m_transaksi');
 		if(!$this->session->userdata('username')) {
@@ -22,11 +21,8 @@ class Laporan extends CI_Controller {
 
 	public function index()
 	{
-		$user_id = $this->session->userdata('id');
-		$user_data = $this->M_account->getUserDataById($user_id);
-
+		$data = $this->data;
 		$data['unit'] = $this->m_unit->getAllUnit();
-		$data['profile_picture'] = $user_data->profile_picture;
 
 		for($i=2020; $i <= 2030; $i++){
 			$generateTahun[] = $i;

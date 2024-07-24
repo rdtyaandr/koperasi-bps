@@ -32,19 +32,17 @@
                                         value="<?= $ubah['nama_barang'] ?>" />
                                 </div>
                                 <div class="form-group">
+                                    <label>Stok</label>
+                                    <input class="form-control" type="text" name="stok" 
+                                    value="<?= $ubah['stok'] ?>" />
+                                </div>
+                                <div class="form-group">
                                     <label>Detail</label>
                                     <textarea class="form-control" rows="3"
                                         name="detail_barang"><?= $ubah['detail_barang'] ?></textarea>
                                 </div>
-                                <div class="form-group">
-                                    <label>Stok</label>
-                                    <textarea class="form-control" type="text" name="stok"
-                                        name="stok"><?= $ubah['stok'] ?></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label>Stok</label>
-                                    <textarea class="form-control" rows="3" name="stok"><?= $ubah['stok'] ?></textarea>
-                                </div>
+
+
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">

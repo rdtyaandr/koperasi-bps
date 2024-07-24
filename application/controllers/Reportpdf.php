@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Reportpdf extends CI_Controller{
+class Reportpdf extends MY_Controller{
     public function index(){
         $this->load->library('mypdf');
         $data['judul'] = "Laporan Dompdf";
