@@ -27,34 +27,47 @@
                                     </center>
                                     <div class="card-body">
                                     <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Register Page</h1>
+                                <h1 class="h4 text-gray-900">Register Page</h1>
                                 <hr>
                             </div>
                             <form action="<?= base_url('auth/register') ?>" method="post" class="user">
                                 <div class="form-group row">
-                                    <div class="col-sm-12 mb-1 mb-sm-0">
-                                    <label class="small mb-1">Username</label>
-                                        <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                                        name="username"
-                                            placeholder="Full Name" value="<?= set_value('username')?>">
-                                            <?= form_error('username','<small class="text-danger pl-3">','</small>'); ?>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-12 mb-1 mb-sm-0">
+                                    <div class="col-sm-12 mb-1 mb-sm-0 mx-auto pl-1 ">
                                     <label class="small mb-1">Full Name</label>
                                         <input type="text" class="form-control form-control-user" id="exampleFirstName"
                                         name="nama_lengkap"
                                             placeholder="Full Name" value="<?= set_value('nama_lengkap')?>">
-                                            <?= form_error('nama_lengkap','<small class="text-danger pl-3">','</small>'); ?>
+                                            <?= form_error('nama_lengkap','<small class="text-danger pl-3 error-message">','</small>'); ?>
+                                    </div>
+                                    <div class="col-sm-10 mb-1 mb-sm-0 ml-1">
+                                    <label class="small mb-1">Username</label>
+                                        <input type="text" class="form-control form-control-user" id="exampleFirstName"
+                                        name="username"
+                                            placeholder="Masukan Username" value="<?= set_value('username')?>">
+                                            <?= form_error('username','<small class="text-danger pl-3 error-message">','</small>'); ?>
+                                    </div>
+                                <div class="col-sm-10 mb-1 mb-sm-2 ml-3">
+                                    <label class="small mb-1">Email</label>
+                                        <input type="text" class="form-control form-control-user" id="exampleFirstName"
+                                        name="email"
+                                            placeholder="Masukan Email" value="<?= set_value('email')?>">
+                                            <?= form_error('email','<small class="text-danger pl-3 error-message">','</small>'); ?>
+                                    </div>
+                                <div class="col-sm-12 mb-1 mb-sm-0 mx-auto ">
+                                    <label class="small mb-1">Satker</label>
+                                        <input type="text" class="form-control form-control-user" id="exampleFirstName"
+                                        name="satker"
+                                            placeholder="Masukan Satker Anda" value="<?= set_value('satker')?>">
+                                            <?= form_error('satker','<small class="text-danger pl-3 error-message">','</small>'); ?>
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                </div>
+                                <div class="form-group row -mb-0">
+                                    <div class="col-sm-5 mb-sm-0 ml-3 ">
                                     <label class="small mb-1">Password</label>
-                                        <input type="password" class="form-control form-control-user"
+                                        <input type="password" class="form-control form-control-user "
                                             id="exampleInputPassword" placeholder="Password" name="password1">
-                                            <?= form_error('password1','<small class="text-danger pl-3">','</small>'); ?>
+                                            <?= form_error('password1','<small class="text-danger pl-3 error-message ">','</small>'); ?>
                                     </div>
                                     <div class="col-sm-6">
                                     <label class="small mb-1">Confirmation</label>
@@ -62,12 +75,18 @@
                                             id="exampleRepeatPassword" placeholder="Repeat Password" name="password2">
                                     </div>
                                 </div>
-                                <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                                <button type="submit" class="btn btn-primary btn-block" name="register">Register</button>
+                                
+                                <div class="form-group d-flex align-items-center justify-content-between mt-4 mx-2  ">
+                                <button type="submit" class="btn btn-primary btn-block  " name="register">Register</button>
                             </div>
+
                             </form>
                                         <hr>
-                                        <small>You Have an Account? </small><a href="<?= base_url('auth')?>" class="signin">Sign In</a>
+                                        <div class="mr-7 ml-7 mx-10 mb-4 ">
+                                        <small >You Have an Account? </small>
+                                        
+                                        <a href="<?= base_url('auth')?>" class="signin ">Sign In</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -80,7 +99,7 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-6 small">
-                                Copyright &copy; Naz Codes <?= date('Y') ?>
+                                Copyright &copy; Bps Jatim  <?= date('Y') ?>
                             </div>
                         </div>
                     </div>
@@ -103,6 +122,13 @@
                           'error'
                         );
              }
+        </script>
+        <script>
+            $(document).ready(function() {
+                setTimeout(function() {
+                    $(".error-message").fadeOut("slow");
+                }, 3000); // 5000 ms = 5 detik
+            });
         </script>
     </body>
 </html>

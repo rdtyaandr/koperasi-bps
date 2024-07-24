@@ -13,7 +13,6 @@ Class Auth extends CI_Controller{
 }
 
 	public function index(){
-		already_login();
 		//jika validasi nya gagal
 		$this->form_validation->set_rules('username','Username','required|trim');
 		$this->form_validation->set_rules('password','Password','required|trim');
@@ -44,12 +43,16 @@ Class Auth extends CI_Controller{
 						'id' => $user['id'],
 						'nama_lengkap' => $user['nama_lengkap'],
 						'username' => $user['username'],
+						'email' => $user['email'],
+						'satker' => $user['satker'],
 						'profile_picture' => $user['profile_picture'],
 						'role_id' => $user['role_id']
 					];
 					$this->session->set_userdata($data);
 					if ($user['role_id'] == 1) {
 						redirect('dashboard');
+					} elseif ($user['role_id'] == 3) {
+						redirect('operator/homepage');
 					} else {
 						redirect('user/user');
 					}
@@ -78,6 +81,8 @@ Class Auth extends CI_Controller{
 	{
 		$this->form_validation->set_rules('username','Username','required|trim');
 		$this->form_validation->set_rules('nama_lengkap','Fullname','required|trim');
+		$this->form_validation->set_rules('email','Email','required|trim|valid_email|is_unique[tb_admin.email]');
+		$this->form_validation->set_rules('satker','Satker','required|trim');
 		$this->form_validation->set_rules('password1','Password','required|trim|min_length[3]|matches[password2]',[
 			'matches' => 'Password dont match!',
 			'min_lenght' => 'Password Too Short!'
@@ -90,8 +95,10 @@ Class Auth extends CI_Controller{
 			$this->load->view('auth/v_regist', $data);
 		}else{
 			$data = [
-				'username' => htmlspecialchars($this->input->post('username')),
-				'nama_lengkap' => htmlspecialchars($this->input->post('nama_lengkap')),
+				'nama_lengkap' => htmlspecialchars($this->input->post('nama_lengkap', true)),
+				'username' => htmlspecialchars($this->input->post('username',true)),
+				'email' => htmlspecialchars($this->input->post('email', true)),
+				'satker' => htmlspecialchars($this->input->post('satker', true)),
 				'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
 				'role_id' => 2,
 				'profile_picture' => 'material/image/user.jpg',

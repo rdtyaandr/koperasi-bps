@@ -26,19 +26,23 @@
                 data-feather="menu"></i></button>
         <ul class="navbar-nav align-items-center ml-auto">
             <li class="nav-item dropdown no-caret mr-3 dropdown-user">
-                <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage"
+            <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage"
                     href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false"><img class="img-fluid" src="<?= base_url($profile_picture ? $profile_picture : 'material/image/user.jpg') ?>" /></a>
+                    aria-expanded="false"><img class="img-fluid" 
+                    src="<?= base_url($profile_picture ? $profile_picture : 'material/image/user.jpg') ?>" /></a>
                 <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up"
                     aria-labelledby="navbarDropdownUserImage">
                     <h6 class="dropdown-header d-flex align-items-center">
-                        <img class="dropdown-user-img" src="<?= base_url($profile_picture ? $profile_picture : 'material/image/user.jpg') ?>" />
+                        <img class="dropdown-user-img" 
+                        src="<?= base_url($profile_picture ? $profile_picture : 'material/image/user.jpg') ?>" />
                         <div class="dropdown-user-details">
-                            <div class="dropdown-user-details-name"><?= $this->session->userdata('username'); ?>
+                            <div class="dropdown-user-details-name"><?= $this->session->userdata('nama_lengkap'); ?>
                             </div>
+                            <div class="dropdown-user-details-email"><?= $this->session->userdata('username'); ?></div>
+                        </div>
                     </h6>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="<?= base_url('dashboard/account_setting') ?>">
+                    <a class="dropdown-item" href="<?= base_url('user/User/account_setting') ?>">
                         <div class="dropdown-item-icon"><i data-feather="settings"></i></div>
                         Account
                     </a>

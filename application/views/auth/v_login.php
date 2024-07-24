@@ -27,15 +27,16 @@
 
             <div class="form-group">
                 <label class="small mb-1">Username</label>
-                <input class="form-control py-2" name="username" type="text" placeholder="Username"
+                <input class="form-control py-2 rounded" name="username" type="text" placeholder="Masukan Username"
                     value="<?= set_value('username') ?>" />
             </div>
             <?= form_error('username', '<small class="text-danger pl-3">', '</small>'); ?>
             <div class="form-group">
-                <label class="small mb-1">Password</label>
-                <input class="form-control py-2" name="password" type="password" placeholder="Password" />
-                <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
+                <label class="small mb-1">Kata Sandi</label>
+                <input class="form-control py-2 my-1 rounded" name="password" type="password" placeholder="Masukkan Kata Sandi"
+                    value="<?= set_value('password') ?>" />
             </div>
+            <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
 
             <button class="w-100 btn btn-lg btn-primary" type="submit" name="login">Login</button>
         </form>

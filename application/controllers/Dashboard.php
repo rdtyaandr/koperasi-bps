@@ -9,7 +9,10 @@ class Dashboard extends CI_Controller
         parent::__construct();
         $this->load->model('M_account');
         $this->load->library('form_validation');
-		not_login();
+		if(!$this->session->userdata('username')) {
+			redirect('auth');
+		check_admin();
+		}
 
 		
 		
